@@ -23,3 +23,7 @@ folderName = {
 # I am on windows so I use '/'. If you're on Linux or macOS, please use '\'
 folderPath = r"C:/Users/natha/Downloads"
 
+# check files whehter they are "file" or "folder"
+isFiles = [os.path.join(folderPath, file)
+    for file in os.listdir(folderPath)
+        if os.path.isfile(os.path.join(folderPath, file))]
