@@ -10,20 +10,43 @@ from pathlib import Path
 # Depends on what files you download you can add on to this list
 
 # Get types of the files
-folderName = {
-    "Compressed": {'7z','zip', 'rar'},
-    "Programming": {'py', 'js', 'html', 'css', 'java', 'c', 'cpp', 'sql'},
-    "Documents": {'pdf', 'doc', 'docx'},
-    "Images": {'jpg', 'png', 'gif', 'svg', 'bmg'},
-    "Others": {'NONE'}
+folderNames = {
+  "Compressed": {'7z','zip', 'rar'},
+  "Programming": {'py', 'js', 'html', 'css', 'java', 'c', 'cpp', 'sql'},
+  "Documents": {'pdf', 'doc', 'docx'},
+  "Images": {'jpg', 'png', 'gif', 'svg', 'bmg'},
+  "Others": {'NONE'}
 }
 
+# path to the folder you want to sort
+mainPath = r"c:/Users/Nathan/Desktop/COMP3380Ass2NguyenNhatAnh"
+
 # Extract list
+# check files whether they are "file" or "folder", then sort into 
+# the proper list
+fileList = [os.path.join(mainPath, file)
+  for file in os.listdir(mainPath)
+    if os.path.isfile(os.path.join(mainPath, file))]
+#print(fileList)
 
-# I am on windows so I use '/'. If you're on Linux or macOS, please use '\'
-folderPath = r"C:/Users/natha/Downloads"
+foldeList = [os.path.join(mainPath, file)
+  for file in os.listdir(mainPath)
+    if not os.path.isfile(os.path.join(mainPath, file))]
+#print(foldeList)
 
-# check files whehter they are "file" or "folder"
-isFiles = [os.path.join(folderPath, file)
-    for file in os.listdir(folderPath)
-        if os.path.isfile(os.path.join(folderPath, file))]
+# mapping file extensions with associated folders
+fileExtensionMapping = {extension: fileType
+  for fileType, extensions in folderNames.items() #e.g: Programming - py
+    for extension in extensions}
+#print(fileExtensionMapping)
+
+# Make a list of folderNames 
+folderPaths = [os.path.join(mainPath, folderName)
+  for folderName in folderNames.keys()]
+#print(folderPaths)
+# make folders that don't exist
+[os.mkdir(folderPath)
+  for folderPath in folderPaths
+    if not os.path.exists(folderPath)]
+
+# Sorting
