@@ -1,14 +1,11 @@
 import os
 from pathlib import Path
 
-# If you want to have different folder for every type of files then
-# this is not the right script. I'll update a script for that later.
+# path to the folder you want to sort
+mainPath = r"c:/Users/Nathan/Desktop"
 
 # I only list all the files that I often download and their folders
 # they are associated with
-
-# Depends on what files you download you can add on to this list
-
 # Get types of the files
 folderNames = {
   "Compressed": {'7z','zip', 'rar'},
@@ -17,9 +14,6 @@ folderNames = {
   "Images": {'jpg', 'png', 'gif', 'svg', 'bmg'},
   "Others": {'NONE'}
 }
-
-# path to the folder you want to sort
-mainPath = r"c:/Users/Nathan/Desktop/COMP3380Ass2NguyenNhatAnh"
 
 # Extract list
 # check files whether they are "file" or "folder", then sort into the proper list
