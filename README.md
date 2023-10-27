@@ -34,3 +34,8 @@ If you are someone who has music, video, etc. You can add something like:
 "Music": {'mp3','mpa','wav'},
 'Videos':{'avi','flv','mkv','mov','mp4','wmv'}
 ```
+## Run the script on your terminal!
+``` bash
+python organizer.py
+```
+### Enjoy!
