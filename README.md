@@ -11,7 +11,7 @@ For example: I want to organize my Desktop
 mainPath = r"c:/Users/Nathan/Desktop"
 ```
 ## Set up folders and type of files that will be arranged
-Depends on how you want to organaized your files
+Depends on how you want to organized your files/folders, you set up the way you like based on this template
 ``` python
 folderName = {
   "folder_1": {'type_of_file_1', 'type_of_file_2'},
@@ -19,7 +19,7 @@ folderName = {
   ...
 }
 ```
-For example: I only have code, compressed files, images, and document to be organized
+For example: I only have code, compressed files, images, and document need to be organized. So I made 4 main folders and 'Others' for files that are not accounted for
 ``` python
 folderNames = {
   "Compressed": {'7z','zip', 'rar'},
