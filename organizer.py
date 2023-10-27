@@ -22,21 +22,20 @@ folderNames = {
 mainPath = r"c:/Users/Nathan/Desktop/COMP3380Ass2NguyenNhatAnh"
 
 # Extract list
-# check files whether they are "file" or "folder", then sort into 
-# the proper list
+# check files whether they are "file" or "folder", then sort into the proper list
 fileList = [os.path.join(mainPath, file)
   for file in os.listdir(mainPath)
     if os.path.isfile(os.path.join(mainPath, file))]
 #print(fileList)
 
-foldeList = [os.path.join(mainPath, file)
+folderList = [os.path.join(mainPath, file)
   for file in os.listdir(mainPath)
     if not os.path.isfile(os.path.join(mainPath, file))]
 #print(foldeList)
 
 # mapping file extensions with associated folders
 fileExtensionMapping = {extension: fileType
-  for fileType, extensions in folderNames.items() #e.g: Programming - py
+  for fileType, extensions in folderNames.items() #e.g: py: Programming, jpg: Images
     for extension in extensions}
 #print(fileExtensionMapping)
 
@@ -50,3 +49,20 @@ folderPaths = [os.path.join(mainPath, folderName)
     if not os.path.exists(folderPath)]
 
 # Sorting
+# Basic concept: 
+# - split each file by '.' to get extension
+# - knowing extension, we will check which folder that extension maps to
+# - if the extension doesn't map to anything, throw it to Others folder
+# - then make a new path :\mainPath\newFolder\theFile.extension
+def sortingFile(theFile):
+  extension = str(theFile).split('.')[-1] # 1 generally still works but -1 will always make sure that we check the end of string (the extension)
+  newFolder = fileExtensionMapping[extension] if extension in fileExtensionMapping.keys() else 'Others'
+  newPath = os.path.join(mainPath, newFolder, str(theFile).split('\\')[-1]) # '\\' == '\'
+  return newPath
+# Move files into their associated folders by changing their paths (rename it with newPath)
+[Path(eachFile).rename(sortingFile(eachFile)) for eachFile in fileList]
+
+# Do the same to others (Same concept with a few tweaks)
+[Path(folder).rename(os.path.join(mainPath, 'Others', str(folder).split('\\')[-1]))
+  for folder in folderList
+    if str(folder).split('\\')[-1] not in folderNames.keys()]
