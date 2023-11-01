@@ -38,4 +38,5 @@ If you are someone who has music, video, etc. You can add something like:
 ``` bash
 python organizer.py
 ```
-### Enjoy!
+### Author
+<li><a href="https://github.com/nateng98">Nước Mắm Code</a></li>
