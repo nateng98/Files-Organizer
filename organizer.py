@@ -12,6 +12,7 @@ folderNames = {
   "Programming": {'py', 'js', 'html', 'css', 'java', 'c', 'cpp', 'sql'},
   "Documents": {'pdf', 'doc', 'docx'},
   "Images": {'jpg', 'png', 'gif', 'svg', 'bmg'},
+  "Installer": {'exe', 'msi'},
   "Others": {'NONE'}
 }
 
